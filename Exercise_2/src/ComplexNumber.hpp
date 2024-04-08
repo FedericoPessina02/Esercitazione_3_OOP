@@ -11,18 +11,6 @@ struct ComplexNumber {
         rPart = a;
         iPart = b;
     }
-    ComplexNumber(int a, double b) {
-        rPart = a;
-        iPart = b;
-    }
-    ComplexNumber(double a, int b) {
-        rPart = a;
-        iPart = b;
-    }
-    ComplexNumber(int a, int b) {
-        rPart = a;
-        iPart = b;
-    }
 };
 
 std::ostream& operator<<(std::ostream& os, const ComplexNumber& c);

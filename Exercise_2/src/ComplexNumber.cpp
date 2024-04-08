@@ -3,7 +3,14 @@
 #include <cmath>
 
 std::ostream& operator<<(std::ostream& os, const ComplexNumber& c) {
-    if (c.iPart >= 0 )
+    if (c.iPart==0) {
+        os << c.rPart;
+        return os;
+    } else if (c.rPart==0) {
+        os << c.iPart << "i";
+        return os;
+    }
+    if (c.iPart > 0 )
         os << c.rPart << "+" << c.iPart << "i";
     else
         os << c.rPart << c.iPart << "i";
@@ -17,8 +24,9 @@ ComplexNumber operator+(const ComplexNumber& c1, const ComplexNumber& c2) {
 }
 
 bool operator==(const ComplexNumber& c1, const ComplexNumber& c2) {
-    if (abs(c1.rPart - c2.rPart)<=std::numeric_limits<double>::epsilon() && abs(c1.iPart - c2.iPart)<=std::numeric_limits<double>::epsilon())
+    if (std::abs(c1.rPart - c2.rPart)<std::numeric_limits<double>::epsilon() && std::abs(c1.iPart - c2.iPart)<std::numeric_limits<double>::epsilon()) {
         return true;
+    }
     return false;
 }
 
